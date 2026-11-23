@@ -14,7 +14,7 @@ import zipfile
 from typing import Callable
 
 APP_VERSION = "7.9.0"
-DEFAULT_GITHUB_REPO = "HuynhDucVu/nganhangde-v10"
+DEFAULT_GITHUB_REPO = "HuynhDucVu/toan11"
 
 # Các tệp dữ liệu cá nhân của người dùng KHÔNG BAO GIỜ bị ghi đè khi tự động cập nhật
 _PRESERVE_USER_FILES = {
