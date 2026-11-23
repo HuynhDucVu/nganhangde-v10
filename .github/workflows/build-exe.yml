@@ -34,9 +34,8 @@ jobs:
           python tools/set_license_secret.py inject
       - name: Switch to Paid Customer Build for Release
         shell: pwsh
-        run: |
-          python -c "from pathlib import Path; p=Path('nganhangde/core/licensing.py'); p.write_text(p.read_text(encoding='utf-8').replace('AUTHOR_PRO_MODE = True','AUTHOR_PRO_MODE = False',1), encoding='utf-8')"
-          python -c "from pathlib import Path; p=Path('NganHangDe.spec'); p.write_text(p.read_text(encoding='utf-8').replace('name=\"Nganhangde_vu-pro\"','name=\"Nganhangde_vu\"'), encoding='utf-8')"
+        run: python tools/prepare_customer_build.py
+
       - name: Build Windows bundle (--onedir)
         run: pyinstaller --noconfirm --clean NganHangDe.spec
       - name: Copy User Guide & Zip Windows Release
