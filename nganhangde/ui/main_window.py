@@ -177,6 +177,24 @@ class MyLT2026MainWindow(QMainWindow):
         b_row.addWidget(b_pick_files)
         b_row.addStretch()
         src_v.addLayout(b_row)
+
+        # Hàng chọn thư mục xuất file đề (tự tạo thư mục con out/ giống tab Trình chiếu Beamer)
+        from ..paths import app_root_dir as _app_root_exam
+        from ..core.config_manager import ConfigManager as _CfgExamOut
+        out_row = QHBoxLayout()
+        saved_exam_out = _CfgExamOut().get("EXAM", "out_dir", str(_app_root_exam()))
+        self.ed_exam_out_dir = QLineEdit(saved_exam_out)
+        self.ed_exam_out_dir.setPlaceholderText("Thư mục lưu đề thi (phần mềm tự tạo thư mục con 'out' bên trong)...")
+        b_pick_exam_out = QPushButton("Chọn thư mục xuất...")
+        b_pick_exam_out.clicked.connect(self._pick_exam_out_dir)
+        b_open_exam_out = QPushButton("Mở thư mục out")
+        b_open_exam_out.clicked.connect(self._open_exam_out_dir)
+        out_row.addWidget(QLabel("Thư mục xuất:"))
+        out_row.addWidget(self.ed_exam_out_dir, 1)
+        out_row.addWidget(b_pick_exam_out)
+        out_row.addWidget(b_open_exam_out)
+        src_v.addLayout(out_row)
+
         lay.addWidget(src_box)
 
         # 5 sub-tab chuẩn MyLT 2026 v1.0.3.44
@@ -771,10 +789,10 @@ class MyLT2026MainWindow(QMainWindow):
                 if keep_original and sub_selected:
                     var.questions = list(sub_selected)
 
-            from ..paths import app_root_dir
-            d = QFileDialog.getExistingDirectory(self, "Chọn thư mục xuất trọn bộ đề thi", str(app_root_dir()))
-            if not d:
+            out_dir = self._resolve_exam_out_dir(prompt_if_empty=True)
+            if out_dir is None:
                 return
+            d = str(out_dir)
             tpl_custom = opts.get("header_file", "")
             tpl = Path(tpl_custom) if (tpl_custom and Path(tpl_custom).exists()) else resource_path("nganhangde/templates/de_thi.tex")
             embed_qr = opts.get("embed_qr", False) or self.chk_qr.isChecked()
@@ -825,6 +843,40 @@ class MyLT2026MainWindow(QMainWindow):
             )
         except Exception as exc:
             QMessageBox.warning(self, "Lỗi tạo đề", str(exc))
+
+    def _pick_exam_out_dir(self):
+        from ..paths import app_root_dir
+        from ..core.config_manager import ConfigManager
+        cur = self.ed_exam_out_dir.text().strip() if hasattr(self, "ed_exam_out_dir") else str(app_root_dir())
+        d = QFileDialog.getExistingDirectory(self, "Chọn thư mục xuất trọn bộ đề thi (tự tạo thư mục con out)", cur or str(app_root_dir()))
+        if d:
+            self.ed_exam_out_dir.setText(d)
+            cfg = ConfigManager()
+            cfg.set("EXAM", "out_dir", d)
+            cfg.save()
+
+    def _resolve_exam_out_dir(self, prompt_if_empty: bool = False) -> Path | None:
+        from ..paths import app_root_dir
+        base_str = self.ed_exam_out_dir.text().strip() if hasattr(self, "ed_exam_out_dir") else ""
+        if not base_str:
+            if prompt_if_empty:
+                self._pick_exam_out_dir()
+                base_str = self.ed_exam_out_dir.text().strip()
+            if not base_str:
+                base_str = str(app_root_dir())
+        base = Path(base_str)
+        out_dir = base if base.name.lower() == "out" else (base / "out")
+        out_dir.mkdir(parents=True, exist_ok=True)
+        return out_dir
+
+    def _open_exam_out_dir(self):
+        out_dir = self._resolve_exam_out_dir(prompt_if_empty=False)
+        if out_dir is None:
+            return
+        if os.name == "nt":
+            os.startfile(str(out_dir))
+        else:
+            open_pdf_file(str(out_dir))
 
     def _open_bank_db(self):
         p, _ = QFileDialog.getOpenFileName(self, "Mở kho SQLite (.db)", "", "SQLite DB (*.db)")
