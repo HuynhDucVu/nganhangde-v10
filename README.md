@@ -100,12 +100,12 @@ Khi bạn muốn phát hành bản mới để tất cả đồng nghiệp đang
 1. **Khoá bí mật bản quyền KHÔNG nằm trong mã nguồn:**
    * Mã nguồn chỉ giữ placeholder `_LICENSE_SECRET = "__NGANHANGDE_LICENSE_SECRET__"` trong `nganhangde\core\licensing.py`.
    * Trên GitHub: vào **Settings → Secrets and variables → Actions → New repository secret**, tên `NGANHANGDE_LICENSE_SECRET`, giá trị là khoá bí mật của bạn. Workflow sẽ tự nhúng khoá khi build bản phát hành.
-   * Trên máy build/cấp key (Windows): đặt biến môi trường trước khi chạy `build_exe_ban_tinh_phi.bat` hoặc `chay_keygen_admin.bat`, ví dụ `set NGANHANGDE_LICENSE_SECRET=gia_tri_khoa_cua_ban`.
+   * Trên máy build/cấp key (Windows): đặt biến môi trường trước khi chạy `build_exe_ban_tinh_phi.bat` hoặc công cụ cấp Key (lưu riêng ngoài repo), ví dụ `set NGANHANGDE_LICENSE_SECRET=gia_tri_khoa_cua_ban`.
    * Lưu ý: giữ đúng giá trị khoá cũ thì các Key đã cấp cho khách vẫn dùng được. Đổi khoá sẽ làm mất hiệu lực toàn bộ Key đã cấp.
 2. **Quy trình bán / cấp bản quyền cho khách hàng:**
    * Gửi tệp **`Nganhangde_vu_v6.6_BanTinhPhi.zip`** (chỉ gồm `Nganhangde_vu.exe`, `_internal`, và `HUONG_DAN_SU_DUNG.txt` — tuyệt đối KHÔNG gửi `admin_keygen_gui.py`).
    * Khách hàng mở `Nganhangde_vu.exe` → bấm **`Sao chép Mã máy`** (dạng `NHV-XXXX-XXXX-XXXX`) gửi cho bạn.
-   * Trên máy bạn, nháy đúp **`chay_keygen_admin.bat`** → dán Mã máy của khách → chọn gói (`Vĩnh viễn` / `1 năm` / `6 tháng` / `1 tháng` / `7 ngày`) → bấm **`Tạo Mã kích hoạt`**.
+   * Trên máy bạn, mở công cụ cấp Key (lưu riêng, không có trong repo) → dán Mã máy của khách → chọn gói (`Vĩnh viễn` / `1 năm` / `6 tháng` / `1 tháng` / `7 ngày`) → bấm **`Tạo Mã kích hoạt`**.
    * Gửi Key đó cho khách dán vào cửa sổ kích hoạt. Mọi Key đã cấp tự động lưu lịch sử vào `danh_sach_khach_hang_key.csv`.
 3. **Cài mật khẩu mở phần mềm:**
    * Người dùng có thể vào tab **`Thông tin`** → bấm **`Cài / Đổi mật khẩu mở app`** để đặt mật khẩu cá nhân mỗi khi khởi động.

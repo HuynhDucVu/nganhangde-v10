@@ -14,7 +14,7 @@
           + Hoặc tạo kho mới (NÊN chọn Private nếu muốn giữ kín mã nguồn
             và khoá bí mật _LICENSE_SECRET; lưu ý kho Private thì khách
             không tự tải Auto-Update được nếu không để Public Release).
-          + Mẹo bảo mật tốt nhất: Không đưa admin_keygen_gui.py lên kho
+          + Mẹo bảo mật tốt nhất: Không đưa công cụ cấp Key lên kho
             Public, hoặc giữ mã nguồn ở kho Private và tải tệp
             Nganhangde_vu_v7.9_BanTinhPhi.zip đăng thủ công lên mục
             Releases của 1 kho Public riêng.

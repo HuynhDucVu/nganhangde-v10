@@ -15,7 +15,7 @@ from ..paths import user_data_dir
 
 # ==============================================================================
 # KHÓA BÍ MẬT CẤP BẢN QUYỀN (Tác giả có thể đổi chuỗi này trước khi build .exe)
-# Lưu ý: admin_keygen_gui.py dùng chung khóa này từ module nganhangde.core.licensing.
+# Lưu ý: công cụ cấp Key (lưu riêng ngoài repo) dùng chung khóa này từ module nganhangde.core.licensing.
 # ==============================================================================
 # True  = Bản Tác giả (-pro): mở thẳng không cần nhập Key kích hoạt.
 # False = Bản Tính phí gửi khách: bắt buộc kích hoạt theo Mã máy.
