@@ -333,3 +333,22 @@ auto/*
 # option is specified. Footnotes are the stored in a file with suffix Notes.bib.
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
+
+## Project (Python/PyInstaller)
+__pycache__/
+*.py[cod]
+*$py.class
+*.db
+*.db.bak
+*.db-journal
+_backup_v0.9.0/
+build/
+dist/
+*.log
+*.aux
+*.out
+*.synctex.gz
+.pytest_cache/
+.venv/
+venv/
+.env

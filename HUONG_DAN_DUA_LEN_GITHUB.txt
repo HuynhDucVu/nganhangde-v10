@@ -1,0 +1,53 @@
+﻿========================================================================
+    HƯỚNG DẪN ĐƯA NGANHANGDE_VU-PRO LÊN GITHUB & PHÁT HÀNH TỰ ĐỘNG
+========================================================================
+
+1. CHUẨN BỊ LẦN ĐẦU (CHỈ LÀM 1 LẦN)
+------------------------------------------------------------------------
+- Bước 1: Cài Git cho Windows tại: https://git-scm.com/download/win
+          (Cứ bấm Next liên tục đến Finish).
+- Bước 2: Mở CMD (Command Prompt) khai báo tên & email GitHub của bạn:
+          git config --global user.name "HuynhDucVu"
+          git config --global user.email "email_github_cua_ban@gmail.com"
+- Bước 3: Lên trang https://github.com đăng nhập tài khoản HuynhDucVu.
+          + Nếu dùng lại kho cũ: https://github.com/HuynhDucVu/nganhangde-v10
+          + Hoặc tạo kho mới (NÊN chọn Private nếu muốn giữ kín mã nguồn
+            và khoá bí mật _LICENSE_SECRET; lưu ý kho Private thì khách
+            không tự tải Auto-Update được nếu không để Public Release).
+          + Mẹo bảo mật tốt nhất: Không đưa admin_keygen_gui.py lên kho
+            Public, hoặc giữ mã nguồn ở kho Private và tải tệp
+            Nganhangde_vu_v7.9_BanTinhPhi.zip đăng thủ công lên mục
+            Releases của 1 kho Public riêng.
+
+2. ĐƯA MÃ NGUỒN LÊN GITHUB BẰNG 1 CÚ NHÁY ĐÚP
+------------------------------------------------------------------------
+- Giải nén Nganhangde_vu-pro_v7.9.zip vào thư mục cố định không dấu
+  (Ví dụ: D:\Nganhangde_vu-pro).
+- Nháy đúp tệp: day_len_github.bat
+  + Dòng 1: Nhấn Enter để dùng mặc định https://github.com/HuynhDucVu/nganhangde-v10.git
+            (hoặc dán link kho GitHub mới của bạn).
+  + Dòng 2: Nhập tag phát hành, ví dụ: v7.9.0 (hoặc nhấn Enter bỏ trống
+            nếu chỉ muốn lưu mã nguồn chưa phát hành bản mới).
+- Lần đầu đẩy code, trình duyệt sẽ bật cửa sổ đăng nhập GitHub -> bấm
+  "Sign in with your browser" -> Authorize là xong.
+
+3. KIỂM TRA GITHUB TỰ ĐỘNG BUILD FILE .EXE & PHÁT HÀNH
+------------------------------------------------------------------------
+- Truy cập kho GitHub của bạn -> bấm tab [Actions].
+- Chờ khoảng 3-5 phút cho quy trình "Test, Build Windows EXE and Auto-Release"
+  chuyển sang dấu tích xanh.
+- Nếu bạn có nhập tag (VD: v7.9.0), vào mục [Releases] bên phải sẽ thấy
+  bản phát hành mới kèm tệp Nganhangde_vu-Windows.zip (đã tự động bật
+  khoá Key cho khách hàng).
+- Từ thời điểm đó, mọi máy khách hàng đang mở Nganhangde_vu.exe sẽ tự
+  nhận thông báo cập nhật lên phiên bản mới nhất.
+
+4. QUY TRÌNH MỖI KHI BẠN NÂNG CẤP TÍNH NĂNG MỚI
+------------------------------------------------------------------------
+1) Sửa code trong thư mục D:\Nganhangde_vu-pro\nganhangde\
+2) Chạy thử trực tiếp bằng chay_ung_dung.bat (không cần Key).
+3) Mở nganhangde\core\updater.py -> tăng APP_VERSION (VD: "7.9.0" -> "7.9.0").
+4) Chạy day_len_github.bat và nhập tag mới (VD: v7.9.0) để phát hành
+   cập nhật tự động, hoặc chạy build_exe_ban_tinh_phi.bat để tạo file
+   ZIP bản tính phí gửi trực tiếp cho khách hàng mới.
+========================================================================

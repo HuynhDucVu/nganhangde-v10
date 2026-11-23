@@ -1,0 +1,12 @@
+HƯỚNG DẪN ĐÓNG GÓI & XUẤT BẢN Nganhangde_vu v6.5.0
+==================================================
+
+Xem hướng dẫn chi tiết từ A đến Z trong tệp: README.md (có thể mở bằng Notepad hoặc trình duyệt).
+
+Tóm tắt 3 bước nhanh:
+1. Cài Python 3.12 (64-bit) tại python.org (nhớ tích 'Add python.exe to PATH').
+2. Nháy đúp 'chay_ung_dung.bat' để chạy thử trực tiếp từ Python.
+3. Nháy đúp 'build_exe.bat' để tạo:
+   - Bản chạy trên máy này : dist\Nganhangde_vu\Nganhangde_vu.exe
+   - Tệp nén gửi đồng nghiệp: Nganhangde_vu_v6.5_GuiDongNghiep.zip
+4. Nháy đúp 'day_len_github.bat' (nhập tag v6.5.0) để phát hành tự động cập nhật qua GitHub Releases.

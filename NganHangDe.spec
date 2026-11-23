@@ -1,0 +1,91 @@
+# -*- mode: python ; coding: utf-8 -*-
+from pathlib import Path
+
+root = Path.cwd()
+datas = [(rel, rel) for rel in ("nganhangde/templates", "nganhangde/assets", "sample_data") if (root / rel).exists()]
+if (root / "config.ini").exists():
+    datas.append(("config.ini", "."))
+ico = root / "nganhangde/assets/app.ico"
+
+a = Analysis(
+    ["run_gui.py"],
+    pathex=[str(root)],
+    binaries=[],
+    datas=datas,
+    hiddenimports=[
+        "nganhangde.cli",
+        "nganhangde.ui.main_window",
+        "nganhangde.ui.mylt_pro_tabs",
+        "nganhangde.ui.mylt2025_suite_tab",
+        "nganhangde.ui.tien_ich_2_tab",
+        "nganhangde.ui.doi_so_tab",
+        "nganhangde.ui.mylt2026_exact_widgets",
+        "nganhangde.ui.mylt2026_tabs_extra",
+        "nganhangde.ui.cau_hoi_mylt2026_tab",
+        "nganhangde.core.tex_file_tools",
+        "nganhangde.core.doi_so_engine",
+        "nganhangde.core.config_manager",
+        "nganhangde.exporters.phieu_tltn_2025",
+        "nganhangde.exporters.tikz2pic",
+        "nganhangde.exporters.blogger_form_exporter",
+        "pypdf",
+        "nganhangde.core.idmap_builtin",
+        "nganhangde.core.similarity",
+        "nganhangde.ai.essay_grader",
+        "nganhangde.converters.mtef_bridge",
+        "nganhangde.converters.mylt_bank_importer",
+        "nganhangde.ai.question_verifier",
+        "nganhangde.ui.import_bank_dialog",
+        "nganhangde.ui.word2tex_options_dialog",
+        "nganhangde.ui.manual_pdf_ocr_dialog",
+        "nganhangde.ui.tron_de_mylt2026_tab",
+        "nganhangde.ui.hdsd_mylt2026_tab",
+        "nganhangde.core.updater",
+        "nganhangde.core.licensing",
+        "nganhangde.ui.license_dialog",
+        "nganhangde.ui.theme_manager",
+        "nganhangde.ui.beamer_presentation_tab",
+        "nganhangde.exporters.beamer_exporter",
+        "pyodbc",
+        "nganhangde.exporters.topic_book",
+        "nganhangde.gui_qt",
+        "nganhangde.gui",
+        "openpyxl",
+        "docx",
+        "fitz",
+        "qrcode",
+        "pydantic",
+        "concurrent.futures",
+        "concurrent.futures.thread",
+    ],
+    hookspath=[],
+    hooksconfig={},
+    runtime_hooks=[],
+    excludes=[
+        "PySide6.QtQml",
+        "PySide6.QtQuick",
+        "PySide6.QtQuickWidgets",
+        "PySide6.QtWebEngineCore",
+        "PySide6.QtWebEngineWidgets",
+        "PySide6.Qt3DCore",
+        "PySide6.Qt3DRender",
+        "PySide6.QtMultimedia",
+        "PySide6.QtDesigner",
+    ],
+    noarchive=False,
+    optimize=0,
+)
+pyz = PYZ(a.pure)
+exe = EXE(
+    pyz,
+    a.scripts,
+    [],
+    exclude_binaries=True,
+    name="Nganhangde_vu-pro",
+    debug=False,
+    strip=False,
+    upx=False,
+    console=False,
+    icon=str(ico) if ico.exists() else None,
+)
+coll = COLLECT(exe, a.binaries, a.datas, strip=False, upx=False, name="Nganhangde_vu-pro")

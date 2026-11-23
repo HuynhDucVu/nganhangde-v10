@@ -1,0 +1,73 @@
+﻿========================================================================
+        HƯỚNG DẪN SỬ DỤNG PHẦN MỀM NGANHANGDE_VU (v6.6.0)
+========================================================================
+
+1. CÀI ĐẶT VÀ KHỞI ĐỘNG LẦN ĐẦU
+------------------------------------------------------------------------
+- Bước 1: Giải nén toàn bộ tệp ZIP vào một thư mục KHÔNG DẤU tiếng Việt
+          (Ví dụ: D:\Nganhangde_vu).
+          Lưu ý: Không chạy trực tiếp bên trong cửa sổ ZIP.
+- Bước 2: Mở thư mục vừa giải nén và nháy đúp tệp: Nganhangde_vu.exe
+          (Nếu Windows hiện bảng xanh "Windows protected your PC", bấm
+          "More info" -> "Run anyway").
+- Bước 3: Tạo biểu tượng ngoài màn hình Desktop: nháy chuột phải vào
+          Nganhangde_vu.exe -> Send to -> Desktop (create shortcut).
+
+2. KÍCH HOẠT BẢN QUYỀN THEO MÃ MÁY & CÀI MẬT KHẨU
+------------------------------------------------------------------------
+- Ở lần mở đầu tiên, phần mềm sẽ hiện cửa sổ "Kích hoạt bản quyền" cùng
+  với MÃ MÁY riêng của máy tính bạn (dạng: NHV-XXXX-XXXX-XXXX).
+- Bấm nút [Sao chép Mã máy] và gửi cho tác giả qua Zalo/Email.
+- Nhận MÃ KÍCH HOẠT (dạng PRO-PERM-XXXXXXXXXXXX hoặc PRO-YYYYMMDD-...)
+  dán vào ô "Mã kích hoạt" -> nhập Họ tên/Đơn vị -> bấm [Kích hoạt ngay].
+- Cài thêm mật khẩu mở phần mềm (tuỳ chọn):
+  Vào tab [Thông tin] -> bấm [Cài / Đổi mật khẩu mở app] để khoá phần
+  mềm trên máy cá nhân.
+
+3. CẤU HÌNH TEXSTUDIO (TEX LIVE 2019) ĐỂ BIÊN DỊCH PDF
+------------------------------------------------------------------------
+- Mở TeXstudio -> Tùy chọn -> Cấu hình TeXstudio -> Lệnh.
+- Tại dòng PdfLaTeX, trỏ đúng đường dẫn:
+  C:\texlive\2019\bin\win32\pdflatex.exe -synctex=1 -interaction=nonstopmode %.tex
+- Tên tệp .tex xuất ra đã được phần mềm tự động đổi sang không dấu và
+  ghép sẵn khung Main chuẩn TeX Live 2019, chỉ cần bấm F5 để ra PDF.
+
+4. CẤU HÌNH CHUYỂN WORD / PDF / ẢNH SANG LATEX (CHUẨN 100%)
+------------------------------------------------------------------------
+- Lấy Gemini API Key miễn phí tại: https://aistudio.google.com/apikey
+- Trong phần mềm, vào: Tab [Tiện ích] -> [Tiện ích 1]
+  -> Khung "Chuyển đổi file Word/PDF sang TeX" -> bấm [Tuỳ chọn].
+- Chọn [Dùng Gemini] -> dán API Key vào ô API -> bấm [Lưu] -> [Lưu & Đóng].
+- Chuyển Word (.docx) hoặc PDF/Ảnh (.pdf, .png, .jpg):
+  + Chọn tệp rồi bấm [Chuyển] để chuyển toàn bộ và tự mở trên TeXstudio.
+  + Hoặc bấm [Chuyển PDF/ảnh thủ công] để chọn từng khoảng trang cụ thể.
+
+5. HƯỚNG DẪN NHANH CÁC TAB CHỨC NĂNG CHÍNH
+------------------------------------------------------------------------
+[Tab 1: Trộn đề]
+  - Chọn nguồn "Từ ngân hàng câu hỏi" hoặc "Từ Files".
+  - Có đủ 5 chế độ: Tạo đề theo ID | Tạo đề tự chọn | Tạo đề theo file
+    | Tạo đề tương tự | Tuỳ chọn đề (số đề, mã đề 3/4 số, sắp xếp câu,
+    Phiếu TLTN 2025, biên dịch PDF, xuất OMR Excel & Ma trận CV 7991).
+  - Bấm nút [Tạo đề] ở góc dưới bên phải để xuất trọn bộ.
+
+[Tab 2: Câu hỏi & Tab 3: Ma trận]
+  - Nhập đề .tex vào kho, tìm kiếm nhanh FTS5, rà soát lỗi cú pháp,
+    tìm câu gần trùng, trình chiếu F11, nạp/xuất Ma trận & Đặc tả CV 7991.
+
+[Tab 4: Tiện ích]
+  - Chuyển Word/PDF/Ảnh <-> LaTeX, lọc câu hỏi/hình TikZ, tô phiếu 2025,
+    xuất đề Moodle/Aiken/Quizizz/Forms, Đấu trường LAN, Biên soạn Chuyên đề,
+    Trạm AI (Gán ID6, sinh câu, chấm tự luận).
+
+[Tab 5-9: Vẽ hình | Đồ thị | BBT&XD | Biểu diễn nghiệm | Soạn thảo]
+  - Sinh nhanh mã TikZ / tkz-tab chuẩn SGK, xem trước PDF và Copy dán vào đề.
+
+[Tab HDSD & Phím tắt F1]
+  - Nhấn phím F1 ở bất kỳ đâu để mở cửa sổ HDSD tổng hợp.
+  - Ở cuối mỗi tab chức năng đều có thanh "HDSD nhanh" và nút [HDSD chi tiết].
+
+[Tự động cập nhật]
+  - Vào tab [Thông tin] -> bấm [Kiểm tra cập nhật ngay] để tải và tự nâng
+    cấp khi có phiên bản mới.
+========================================================================
