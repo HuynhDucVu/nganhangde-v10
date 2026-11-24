@@ -13,7 +13,7 @@ import webbrowser
 import zipfile
 from typing import Callable
 
-APP_VERSION = "8.2.1"
+APP_VERSION = "9.1.6"
 DEFAULT_GITHUB_REPO = "HuynhDucVu/nganhangde-v10"
 
 # Các tệp dữ liệu cá nhân của người dùng KHÔNG BAO GIỜ bị ghi đè khi tự động cập nhật
